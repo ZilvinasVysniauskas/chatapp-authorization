@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatapp-authorization-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: chatapp-authorization-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

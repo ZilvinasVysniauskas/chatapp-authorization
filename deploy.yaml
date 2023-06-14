@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  chatapp-authorization
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatapp-authorization
+  template:
+    metadata:
+      labels:
+        app: chatapp-authorization
+    spec:
+      containers:
+        - name: chatapp-authorization
+          image:  zilvinas0147/chatapp-authorization:v1.0.0
+          ports:
+            - containerPort: 8080
