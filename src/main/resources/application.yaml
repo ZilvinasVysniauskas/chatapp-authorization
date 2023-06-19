@@ -1,0 +1,37 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-secret: "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"
+            client-id: "162108664997-bqpapm5nn8a35nndm3d4g17s9lf8mk9j.apps.googleusercontent.com"
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  data:
+    mongodb:
+      uri: "mongodb+srv://test_user:Test123@cluster0.cfmd8.mongodb.net/chat_app_db"
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+app:
+  authorizedRedirectUris:
+    - "http://localhost:4200/oauth2/redirect"
+  tokenExpirationMsec: 864000000
+  tokenSecret: "SlhncUhoS29kVkFaT2lnQkNVWURwQmFVdTVXS2JTSFRDVWJ6a2c9PXJaL1BvNHF0dHQvaTBYSXRLS2Mxb3Fnbg=="
+  # Add more app configuration properties here
+
+
+
+
+amazon:
+  s3:
+    secretKey: "8HXHTx8mUmFGKPW4fF5/bEHa9t1APW+dBXQtlv8OX"
+    accessKey: "AKIATRWDS2WY6NWHEWEM"
