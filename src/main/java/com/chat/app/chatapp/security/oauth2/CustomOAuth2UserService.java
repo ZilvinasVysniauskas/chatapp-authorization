@@ -1,6 +1,6 @@
 package com.chat.app.chatapp.security.oauth2;
 
-import com.chat.app.chatapp.model.user.User;
+import com.chat.app.chatapp.model.User;
 import com.chat.app.chatapp.repository.UserRepository;
 import com.chat.app.chatapp.security.UserPrincipal;
 import com.chat.app.chatapp.security.oauth2.user.OAuth2UserInfo;
@@ -64,7 +64,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
     private User registerNewUser(OAuth2UserRequest oAuth2UserRequest, OAuth2UserInfo oAuth2UserInfo) {
         User user = User.builder()
-                .name(oAuth2UserInfo.getName())
+                .username(oAuth2UserInfo.getName())
                 .email(oAuth2UserInfo.getEmail())
                 .provider(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()))
                 .providerId(oAuth2UserInfo.getId())
@@ -73,7 +73,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     }
 
     private User updateExistingUser(User existingUser, OAuth2UserInfo oAuth2UserInfo) {
-        existingUser.setName(oAuth2UserInfo.getName());
+        existingUser.setUsername(oAuth2UserInfo.getName());
         return userRepository.save(existingUser);
     }
 

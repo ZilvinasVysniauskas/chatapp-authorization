@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.chat.app</groupId>
-	<artifactId>chat-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>chatapp-authorization</artifactId>
+	<version>1.6.0</version>
 	<name>chat-app</name>
 	<description>Chat Application Server</description>
 	<properties>
@@ -40,8 +40,14 @@
 		</dependency>
 
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
 		<dependency>
@@ -104,6 +110,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>zilvinas0147/${project.artifactId}:${project.version}</name>
+					</image>
+				</configuration>
 				<version>3.0.7</version>
 			</plugin>
 		</plugins>

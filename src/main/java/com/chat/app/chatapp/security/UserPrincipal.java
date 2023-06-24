@@ -1,6 +1,6 @@
 package com.chat.app.chatapp.security;
 
-import com.chat.app.chatapp.model.user.User;
+import com.chat.app.chatapp.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,7 +30,7 @@ public class UserPrincipal implements OAuth2User, UserDetails {
                 singletonList(new SimpleGrantedAuthority("ROLE_USER"));
 
         return new UserPrincipal(
-                user.getId(),
+                user.getId().toString(),
                 user.getEmail(),
                 user.getPassword(),
                 authorities
