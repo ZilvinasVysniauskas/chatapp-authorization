@@ -2,13 +2,17 @@ package com.chat.app.chatapp.model;
 
 import com.chat.app.chatapp.types.AuthProvider;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "users_table")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

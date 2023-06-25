@@ -1,11 +1,12 @@
 spring:
+
   security:
     oauth2:
       client:
         registration:
           google:
-            client-id: "162108664997-bqpapm5nn8a35nndm3d4g17s9lf8mk9j.apps.googleusercontent.com"
-            client-secret: "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"
+            client-id: "${GOOGLE_CLIENT_ID}"
+            client-secret: "${GOOGLE_CLIENT_SECRET}"
             redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
             scope:
               - email
@@ -17,23 +18,22 @@ spring:
   jpa:
     show-sql: true
   datasource:
-    url: jdbc:mysql://34.68.129.10:3306/chatapp_user?allowPublicKeyRetrieval=true&useSSL=false
-    username: chatapp-user-mysql
-    password: "&14EM'^9SDMh1kx|"
+    url: jdbc:mysql://localhost:3306/chatapp_user
+    username: root
+    password: "root"
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-logging:
-  level:
-    org.springframework.security: DEBUG
+  application:
+    name: authorization
+  profiles:
+    active: dev
+  config:
+#    choose port 9999 (non existent) if running outside docker
+    import: optional:configserver:http://localhost:8888
+#    import: optional:configserver:http://localhost:9999
 
 app:
   authorizedRedirectUris:
     - "http://localhost:4200/oauth2/redirect"
   tokenExpirationMsec: 864000000
-  tokenSecret: "SlhncUhoS29kVkFaT2lnQkNVWURwQmFVdTVXS2JTSFRDVWJ6a2c9PXJaL1BvNHF0dHQvaTBYSXRLS2Mxb3Fnbg=="
-  # Add more app configuration properties here
-
-amazon:
-  s3:
-    accessKey: "AKIATRWDS2WY6NWHEWEM"
-    secretKey: "8HXHTx8mUmFGKPW4fF5/bEHa9t1APW+dBXQtlv8OX"
+  tokenSecret: "${TOKEN_SECRET}"
